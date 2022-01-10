@@ -23,11 +23,12 @@ on:
 
 jobs:
   say_hello:
-    runs-on: self-hosted
+    runs-on: ubuntu
     steps:
       - run: |
           echo "Hello ${{ github.event.inputs.name }}!"
           echo "- in ${{ github.event.inputs.home }}!"
+      - run: echo "Deploying to production server on branch $GITHUB_REF"
       - shell: bash
         env: 
           DB_HOST: ${{ secrets.DB_HOST }}
