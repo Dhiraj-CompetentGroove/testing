@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 jobs:
   build:
 
@@ -35,6 +35,7 @@ jobs:
     - name: ENV
       env: 
         DB_HOST: ${{ secrets.DB_HOST }}
-      run: echo $DB_HOST >> dbhost.txt
+      run: |
+        example-command "$DB_HOST" 
     #- run: npm install
     - run: echo "done!   "
