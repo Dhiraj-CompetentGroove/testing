@@ -17,9 +17,9 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - run: "Building...."
+      - run: echo "Building...."
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - run: "testing......."
+      - run: echo  "testing......."
