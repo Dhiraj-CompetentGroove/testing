@@ -9,33 +9,17 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  build:
-
+  setup:
     runs-on: ubuntu-latest
-
-    #strategy:
-    #  matrix:
-    #    node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v2
-    #- name: Use Node.js ${{ matrix.node-version }}
-    #  uses: actions/setup-node@v2
-    #  with:
-    #    node-version: ${{ matrix.node-version }}
-    #    cache: 'npm'
-    - run: | 
-       echo '''DB_HOST=127.0.0.1
-       DB_PORT=3306
-       DB_DATABASE= "testingdatabase"
-       DB_USERNAME= "dhiru"
-       DB_PASSWORD= "Xcntsqwer@1234" ''' > .env-example
-    - run: echo "In the Ubuntu "
-    - name: ENV
-      env: 
-        DB_HOST: ${{ secrets.DB_HOST }}
-      run: |
-        echo "$DB_HOST" 
-    #- run: npm install
-    - run: echo "done!   "
+      - run: echo "settip up...."
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: "Building...."
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: "testing......."
