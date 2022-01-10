@@ -36,5 +36,5 @@ jobs:
       env: 
         DB_HOST: ${{ secrets.DB_HOST }}
       run: echo $DB_HOST >> dbhost.txt
-    - run: npm install
+    #- run: npm install
     - run: echo "done!   "
