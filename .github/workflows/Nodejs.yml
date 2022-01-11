@@ -13,6 +13,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "settip up...."
+      - shell: bash
+        run: 
+           echo "for testing of artifact" > output.log
+      - name: Upload output file
+        uses: actions/upload-artifact@v2
+        with:
+           name: output-log-file
+           path: output.log
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+             name: output-log-file
   build:
     needs: setup
     runs-on: ubuntu-latest
